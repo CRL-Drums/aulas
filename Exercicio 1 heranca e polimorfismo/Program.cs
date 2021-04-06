@@ -13,23 +13,23 @@ namespace Exercicio_1_heranca_e_polimorfismo
         static List<Employee> list = new List<Employee>();
         static void Main(string[] args)
         {            
-            Console.Write("Enter the number of employees: ");
+            Console.Write("Entre com o numero de funcionarios: ");
             int n = int.Parse(Console.ReadLine());
 
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine($"Employee #{i} data:");
-                Console.Write("Outsourced (y/n)? ");
-                char ch = char.Parse(Console.ReadLine());
-                Console.Write("Name: ");
+                Console.WriteLine($"Dados do empregado #{i}:");
+                Console.Write("Terceirizado (Y/N)? ");
+                char respT = char.Parse(Console.ReadLine());
+                Console.Write("Nome: ");
                 String name = Console.ReadLine();
-                Console.Write("Hours: ");
+                Console.Write("Horas: ");
                 int hours = int.Parse(Console.ReadLine());
-                Console.Write("Value per hour: ");
+                Console.Write("Valor por Hora: ");
                 double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                if (ch == 'y')
+                if (respT == 'y' || respT == 'Y')
                 {
-                    Console.Write("Additional charge: ");
+                    Console.Write("Carga adicional: ");
                     double additionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     list.Add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
                 }
@@ -40,7 +40,7 @@ namespace Exercicio_1_heranca_e_polimorfismo
             }
 
             Console.WriteLine();
-            Console.WriteLine("PAYMENTS:");
+            Console.WriteLine("Pagamentos:");
             foreach (Employee emp in list)
             {
                 Console.WriteLine(emp.Name + " - $ " + emp.Payment().ToString("F2", CultureInfo.InvariantCulture));
